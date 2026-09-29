@@ -11,26 +11,90 @@
 
 <body>
 
-    <div class="app">
+    <!-- ==============================
+         WELCOME SCREEN
+    =============================== -->
 
-        <!-- SIDEBAR -->
+    <section id="welcome-screen" class="welcome-screen">
+
+        <div class="welcome-box">
+
+            <div class="welcome-logo">
+                ✓
+            </div>
+
+            <p class="eyebrow">MY TASKS</p>
+
+            <h1>Let's get organized.</h1>
+
+            <p class="welcome-text">
+                Plan your tasks, keep your notes and stay on top of your day.
+            </p>
+
+            <form id="name-form">
+
+                <label for="name-input">
+                    What's your name?
+                </label>
+
+                <input
+                    type="text"
+                    id="name-input"
+                    placeholder="Enter your name"
+                    autocomplete="name"
+                    required
+                >
+
+                <button type="submit" class="primary-button">
+                    Continue
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         MAIN APP
+    =============================== -->
+
+    <div id="app" class="app hidden">
+
+
+        <!-- ==============================
+             SIDEBAR
+        =============================== -->
+
         <aside class="sidebar">
 
             <div class="logo">
-                <div class="logo-icon">✓</div>
+
+                <div class="logo-icon">
+                    ✓
+                </div>
+
                 <span>My Tasks</span>
+
             </div>
+
 
             <nav class="navigation">
 
                 <a href="#dashboard" class="nav-link active">
-                    <span>▦</span>
+                    <span>⌂</span>
                     Dashboard
                 </a>
 
                 <a href="#tasks" class="nav-link">
                     <span>✓</span>
-                    Tasks
+                    My Tasks
+                </a>
+
+                <a href="#history" class="nav-link">
+                    <span>◷</span>
+                    History
                 </a>
 
                 <a href="#notes" class="nav-link">
@@ -40,52 +104,82 @@
 
             </nav>
 
+
             <div class="sidebar-footer">
+
                 <p>Keep it simple.</p>
                 <p>Get things done.</p>
+
             </div>
 
         </aside>
 
 
-        <!-- MAIN CONTENT -->
+        <!-- ==============================
+             MAIN CONTENT
+        =============================== -->
+
         <main class="main-content">
 
+
             <!-- TOP BAR -->
+
             <header class="topbar">
 
                 <div>
-                    <p class="eyebrow">MY WORKSPACE</p>
-                    <h1>Good evening 👋</h1>
+
+                    <p class="eyebrow">
+                        MY WORKSPACE
+                    </p>
+
+                    <h1 id="greeting">
+                        Good evening
+                    </h1>
+
                 </div>
 
-                <div class="profile">
+
+                <div class="profile" id="profile-letter">
                     U
                 </div>
 
             </header>
 
 
-            <!-- DASHBOARD -->
+            <!-- ==============================
+                 DASHBOARD
+            =============================== -->
+
             <section id="dashboard">
+
+
+                <!-- DATE AND TIME -->
 
                 <div class="welcome-card">
 
                     <div>
-                        <p class="eyebrow">OVERVIEW</p>
 
-                        <h2>Stay focused on what matters.</h2>
-
-                        <p>
-                            Manage your tasks and keep your important notes in one place.
+                        <p class="eyebrow">
+                            TODAY
                         </p>
+
+                        <h2 id="current-date">
+                            Monday, September 29
+                        </h2>
+
+                        <p id="current-time">
+                            7:00 PM
+                        </p>
+
                     </div>
 
                 </div>
 
 
                 <!-- STATISTICS -->
+
                 <div class="stats">
+
 
                     <div class="stat-card">
 
@@ -94,8 +188,13 @@
                         </div>
 
                         <div>
+
                             <p>Total Tasks</p>
-                            <h3 id="total-count">0</h3>
+
+                            <h3 id="total-count">
+                                0
+                            </h3>
+
                         </div>
 
                     </div>
@@ -108,8 +207,13 @@
                         </div>
 
                         <div>
+
                             <p>Completed</p>
-                            <h3 id="completed-count">0</h3>
+
+                            <h3 id="completed-count">
+                                0
+                            </h3>
+
                         </div>
 
                     </div>
@@ -122,65 +226,117 @@
                         </div>
 
                         <div>
+
                             <p>Remaining</p>
-                            <h3 id="remaining-count">0</h3>
+
+                            <h3 id="remaining-count">
+                                0
+                            </h3>
+
                         </div>
 
                     </div>
+
+
+                </div>
+
+
+                <!-- TODAY'S TASKS PREVIEW -->
+
+                <div class="dashboard-task-card">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                YOUR DAY
+                            </p>
+
+                            <h2>
+                                Upcoming Tasks
+                            </h2>
+
+                        </div>
+
+
+                        <button
+                            id="dashboard-add-button"
+                            class="add-button"
+                        >
+                            + Add Task
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="dashboard-task-list"
+                        class="dashboard-task-list"
+                    ></div>
+
 
                 </div>
 
             </section>
 
 
-            <!-- TASKS -->
-            <section class="content-section" id="tasks">
+            <!-- ==============================
+                 MY TASKS
+            =============================== -->
+
+            <section
+                class="content-section"
+                id="tasks"
+            >
 
                 <div class="section-heading">
 
                     <div>
-                        <p class="eyebrow">PRODUCTIVITY</p>
-                        <h2>My Tasks</h2>
+
+                        <p class="eyebrow">
+                            PRODUCTIVITY
+                        </p>
+
+                        <h2>
+                            My Tasks
+                        </h2>
+
                     </div>
 
+
                     <button
-                        id="clear-completed"
-                        class="secondary-button">
-                        Clear completed
+                        id="add-task-button"
+                        class="add-button"
+                    >
+                        + Add Task
                     </button>
 
                 </div>
 
 
-                <!-- ADD TASK -->
-                <form id="task-form" class="task-form">
-
-                    <input
-                        type="text"
-                        id="task-input"
-                        placeholder="What needs to be done?"
-                        autocomplete="off"
-                    >
-
-                    <button type="submit" class="primary-button">
-                        Add Task
-                    </button>
-
-                </form>
-
-
                 <!-- TASK LIST -->
-                <div id="task-list" class="task-list"></div>
+
+                <div
+                    id="task-list"
+                    class="task-list"
+                ></div>
 
 
                 <!-- EMPTY STATE -->
-                <div id="empty-state" class="empty-state">
+
+                <div
+                    id="empty-state"
+                    class="empty-state"
+                >
 
                     <div class="empty-icon">
                         ✓
                     </div>
 
-                    <h3>No tasks yet</h3>
+                    <h3>
+                        No tasks yet
+                    </h3>
 
                     <p>
                         Add your first task and start getting things done.
@@ -191,21 +347,90 @@
             </section>
 
 
-            <!-- NOTES -->
-            <section class="content-section notes-section" id="notes">
+            <!-- ==============================
+                 HISTORY
+            =============================== -->
+
+            <section
+                class="content-section"
+                id="history"
+            >
 
                 <div class="section-heading">
 
                     <div>
-                        <p class="eyebrow">QUICK NOTES</p>
-                        <h2>Notes</h2>
+
+                        <p class="eyebrow">
+                            YOUR ACTIVITY
+                        </p>
+
+                        <h2>
+                            Task History
+                        </h2>
+
                     </div>
 
                 </div>
 
 
-                <!-- ADD NOTE -->
-                <form id="note-form" class="note-form">
+                <div
+                    id="history-list"
+                    class="history-list"
+                ></div>
+
+
+                <div
+                    id="history-empty"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        ◷
+                    </div>
+
+                    <h3>
+                        No task history
+                    </h3>
+
+                    <p>
+                        Tasks you create will appear here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==============================
+                 NOTES
+            =============================== -->
+
+            <section
+                class="content-section"
+                id="notes"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            QUICK NOTES
+                        </p>
+
+                        <h2>
+                            Notes
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="note-form"
+                    class="note-form"
+                >
 
                     <input
                         type="text"
@@ -214,19 +439,248 @@
                         autocomplete="off"
                     >
 
-                    <button type="submit" class="primary-button">
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
                         Add Note
                     </button>
 
                 </form>
 
 
-                <!-- NOTES LIST -->
-                <div id="notes-list" class="notes-list"></div>
+                <div
+                    id="notes-list"
+                    class="notes-list"
+                ></div>
+
+
+                <div
+                    id="notes-empty"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        ▤
+                    </div>
+
+                    <h3>
+                        No notes yet
+                    </h3>
+
+                    <p>
+                        Add a quick note to remember something important.
+                    </p>
+
+                </div>
 
             </section>
 
         </main>
+
+    </div>
+
+
+    <!-- ==============================
+         ADD TASK MODAL
+    =============================== -->
+
+    <div
+        id="task-modal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        NEW TASK
+                    </p>
+
+                    <h2>
+                        Add a task
+                    </h2>
+
+                </div>
+
+                <button
+                    id="close-modal"
+                    class="close-button"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="task-form">
+
+
+                <!-- TASK -->
+
+                <div class="form-group">
+
+                    <label for="task-input">
+                        What do you want to do?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="task-input"
+                        placeholder="e.g. Finish my portfolio"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="task-date">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="task-date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group">
+
+                        <label for="task-time">
+                            Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="task-time"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- NOTE -->
+
+                <div class="form-group">
+
+                    <label for="task-note">
+                        Note
+                    </label>
+
+                    <textarea
+                        id="task-note"
+                        placeholder="Add a short note about this task..."
+                        rows="3"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- PRIORITY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Priority
+                    </label>
+
+
+                    <div class="priority-options">
+
+
+                        <label class="priority-option">
+
+                            <input
+                                type="radio"
+                                name="priority"
+                                value="Urgent"
+                            >
+
+                            <span class="priority urgent">
+                                Urgent
+                            </span>
+
+                        </label>
+
+
+                        <label class="priority-option">
+
+                            <input
+                                type="radio"
+                                name="priority"
+                                value="Medium"
+                                checked
+                            >
+
+                            <span class="priority medium">
+                                Medium
+                            </span>
+
+                        </label>
+
+
+                        <label class="priority-option">
+
+                            <input
+                                type="radio"
+                                name="priority"
+                                value="Low"
+                            >
+
+                            <span class="priority low">
+                                Low
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancel-task"
+                        class="secondary-button"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Add Task
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
 
     </div>
 

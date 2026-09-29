@@ -1,6 +1,6 @@
-/* ==============================
+/* =================================
    GENERAL
-============================== */
+================================= */
 
 * {
     margin: 0;
@@ -19,7 +19,8 @@ body {
 }
 
 button,
-input {
+input,
+textarea {
     font-family: inherit;
 }
 
@@ -27,22 +28,133 @@ button {
     cursor: pointer;
 }
 
+.hidden {
+    display: none !important;
+}
 
-/* ==============================
+
+/* =================================
+   WELCOME SCREEN
+================================= */
+
+.welcome-screen {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: #f5f6f8;
+}
+
+.welcome-box {
+    width: 100%;
+    max-width: 430px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+.welcome-logo {
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 25px;
+
+    background: #111827;
+
+    color: white;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.welcome-box h1 {
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+.welcome-text {
+    color: #6b7280;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+#name-form {
+    text-align: left;
+}
+
+#name-form label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+#name-input {
+    width: 100%;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    padding: 13px;
+
+    outline: none;
+
+    margin-bottom: 12px;
+}
+
+#name-input:focus {
+    border-color: #111827;
+}
+
+#name-form .primary-button {
+    width: 100%;
+
+    padding: 13px;
+}
+
+
+/* =================================
    APP
-============================== */
+================================= */
 
 .app {
     min-height: 100vh;
 }
 
 
-/* ==============================
+/* =================================
    SIDEBAR
-============================== */
+================================= */
 
 .sidebar {
     position: fixed;
+
     top: 0;
     left: 0;
     bottom: 0;
@@ -50,6 +162,7 @@ button {
     width: 240px;
 
     background: #111827;
+
     color: white;
 
     padding: 28px 18px;
@@ -58,12 +171,10 @@ button {
     flex-direction: column;
 }
 
-
-/* LOGO */
-
 .logo {
     display: flex;
     align-items: center;
+
     gap: 10px;
 
     padding: 0 10px;
@@ -71,6 +182,7 @@ button {
     margin-bottom: 45px;
 
     font-size: 19px;
+
     font-weight: 600;
 }
 
@@ -79,6 +191,7 @@ button {
     height: 34px;
 
     background: white;
+
     color: #111827;
 
     border-radius: 9px;
@@ -90,12 +203,11 @@ button {
     font-weight: bold;
 }
 
-
-/* NAVIGATION */
-
 .navigation {
     display: flex;
+
     flex-direction: column;
+
     gap: 6px;
 }
 
@@ -110,6 +222,7 @@ button {
 
     display: flex;
     align-items: center;
+
     gap: 12px;
 
     font-size: 14px;
@@ -119,16 +232,15 @@ button {
 
 .nav-link:hover {
     background: #1f2937;
+
     color: white;
 }
 
 .nav-link.active {
     background: white;
+
     color: #111827;
 }
-
-
-/* SIDEBAR FOOTER */
 
 .sidebar-footer {
     margin-top: auto;
@@ -143,9 +255,9 @@ button {
 }
 
 
-/* ==============================
+/* =================================
    MAIN CONTENT
-============================== */
+================================= */
 
 .main-content {
     margin-left: 240px;
@@ -156,13 +268,15 @@ button {
 }
 
 
-/* ==============================
+/* =================================
    TOP BAR
-============================== */
+================================= */
 
 .topbar {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 30px;
@@ -180,6 +294,7 @@ button {
 
 .topbar h1 {
     font-size: 27px;
+
     font-weight: 600;
 }
 
@@ -190,6 +305,7 @@ button {
     border-radius: 50%;
 
     background: #111827;
+
     color: white;
 
     display: flex;
@@ -200,9 +316,9 @@ button {
 }
 
 
-/* ==============================
-   WELCOME
-============================== */
+/* =================================
+   WELCOME / DATE CARD
+================================= */
 
 .welcome-card {
     background: white;
@@ -219,19 +335,19 @@ button {
 .welcome-card h2 {
     font-size: 21px;
 
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 }
 
-.welcome-card p {
+#current-time {
     color: #6b7280;
 
     font-size: 14px;
 }
 
 
-/* ==============================
-   STATISTICS
-============================== */
+/* =================================
+   STATS
+================================= */
 
 .stats {
     display: grid;
@@ -253,6 +369,7 @@ button {
     padding: 20px;
 
     display: flex;
+
     align-items: center;
 
     gap: 14px;
@@ -267,6 +384,7 @@ button {
     background: #f3f4f6;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -288,9 +406,26 @@ button {
 }
 
 
-/* ==============================
+/* =================================
+   DASHBOARD TASK CARD
+================================= */
+
+.dashboard-task-card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =================================
    CONTENT SECTIONS
-============================== */
+================================= */
 
 .content-section {
     background: white;
@@ -306,7 +441,9 @@ button {
 
 .section-heading {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 20px;
@@ -316,60 +453,10 @@ button {
     font-size: 19px;
 }
 
-.secondary-button {
-    background: white;
 
-    border: 1px solid #d1d5db;
-
-    color: #374151;
-
-    padding: 9px 13px;
-
-    border-radius: 8px;
-
-    font-size: 12px;
-}
-
-.secondary-button:hover {
-    background: #f3f4f6;
-}
-
-
-/* ==============================
-   TASK FORM
-============================== */
-
-.task-form,
-.note-form {
-    display: flex;
-
-    gap: 10px;
-
-    margin-bottom: 20px;
-}
-
-.task-form input,
-.note-form input {
-    flex: 1;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 9px;
-
-    padding: 13px 14px;
-
-    font-size: 14px;
-
-    outline: none;
-}
-
-.task-form input:focus,
-.note-form input:focus {
-    border-color: #111827;
-}
-
-
-/* BUTTON */
+/* =================================
+   BUTTONS
+================================= */
 
 .primary-button {
     background: #111827;
@@ -380,7 +467,7 @@ button {
 
     border-radius: 9px;
 
-    padding: 0 18px;
+    padding: 11px 17px;
 
     font-size: 13px;
 }
@@ -389,12 +476,49 @@ button {
     background: #374151;
 }
 
+.add-button {
+    background: #111827;
 
-/* ==============================
-   TASKS
-============================== */
+    color: white;
 
-.task-list {
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 10px 14px;
+
+    font-size: 13px;
+}
+
+.add-button:hover {
+    background: #374151;
+}
+
+.secondary-button {
+    background: white;
+
+    border: 1px solid #d1d5db;
+
+    color: #374151;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+}
+
+.secondary-button:hover {
+    background: #f3f4f6;
+}
+
+
+/* =================================
+   TASK LIST
+================================= */
+
+.task-list,
+.dashboard-task-list {
     display: flex;
 
     flex-direction: column;
@@ -409,13 +533,11 @@ button {
 
     gap: 12px;
 
-    padding: 14px;
+    padding: 15px;
 
     border: 1px solid #e5e7eb;
 
-    border-radius: 9px;
-
-    transition: 0.2s;
+    border-radius: 10px;
 }
 
 .task-item:hover {
@@ -429,16 +551,46 @@ button {
     cursor: pointer;
 }
 
-.task-text {
+.task-content {
     flex: 1;
+}
 
+.task-text {
     font-size: 14px;
+
+    display: block;
+
+    margin-bottom: 5px;
 }
 
 .task-item.completed .task-text {
     text-decoration: line-through;
 
     color: #9ca3af;
+}
+
+.task-details {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+.task-date-time {
+    color: #6b7280;
+
+    font-size: 11px;
+}
+
+.task-note {
+    color: #6b7280;
+
+    font-size: 12px;
+
+    margin-top: 7px;
 }
 
 .delete-button {
@@ -458,9 +610,42 @@ button {
 }
 
 
-/* ==============================
+/* =================================
+   PRIORITY
+================================= */
+
+.priority-badge {
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+.priority-badge.urgent {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+.priority-badge.medium {
+    background: #fef3c7;
+
+    color: #92400e;
+}
+
+.priority-badge.low {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* =================================
    EMPTY STATE
-============================== */
+================================= */
 
 .empty-state {
     text-align: center;
@@ -479,6 +664,7 @@ button {
     background: #f3f4f6;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -500,9 +686,92 @@ button {
 }
 
 
-/* ==============================
+/* =================================
+   HISTORY
+================================= */
+
+.history-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.history-item {
+    display: grid;
+
+    grid-template-columns: 1fr auto auto auto;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 14px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 9px;
+}
+
+.history-task {
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.history-date {
+    font-size: 12px;
+
+    color: #6b7280;
+}
+
+.history-status {
+    font-size: 11px;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    background: #f3f4f6;
+}
+
+.history-status.completed {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* =================================
    NOTES
-============================== */
+================================= */
+
+.note-form {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.note-form input {
+    flex: 1;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    padding: 13px 14px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.note-form input:focus {
+    border-color: #111827;
+}
 
 .notes-list {
     display: grid;
@@ -549,9 +818,199 @@ button {
 }
 
 
-/* ==============================
+/* =================================
+   MODAL
+================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(17, 24, 39, 0.55);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 100%;
+
+    max-width: 500px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 25px;
+}
+
+.modal-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 21px;
+}
+
+.close-button {
+    border: none;
+
+    background: #f3f4f6;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+
+    color: #374151;
+}
+
+.close-button:hover {
+    background: #e5e7eb;
+}
+
+
+/* =================================
+   FORM
+================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    padding: 12px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #111827;
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* =================================
+   PRIORITY OPTIONS
+================================= */
+
+.priority-options {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+.priority-option {
+    cursor: pointer;
+}
+
+.priority-option input {
+    display: none;
+}
+
+.priority {
+    display: inline-block;
+
+    padding: 9px 13px;
+
+    border-radius: 8px;
+
+    border: 1px solid #d1d5db;
+
+    font-size: 12px;
+}
+
+.priority-option input:checked + .priority {
+    border-color: #111827;
+
+    background: #f3f4f6;
+
+    font-weight: 600;
+}
+
+.priority.urgent {
+    color: #b91c1c;
+}
+
+.priority.medium {
+    color: #92400e;
+}
+
+.priority.low {
+    color: #166534;
+}
+
+
+/* =================================
+   MODAL ACTIONS
+================================= */
+
+.modal-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+/* =================================
    MOBILE
-============================== */
+================================= */
 
 @media (max-width: 768px) {
 
@@ -616,4 +1075,19 @@ button {
     .topbar h1 {
         font-size: 22px;
     }
+
+    .history-item {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
 }
