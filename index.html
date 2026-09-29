@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My To-Do Dashboard</title>
+
+    <title>My Tasks</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,142 +13,223 @@
 
     <div class="app">
 
-        <!-- Sidebar -->
+        <!-- SIDEBAR -->
         <aside class="sidebar">
 
             <div class="logo">
                 <div class="logo-icon">✓</div>
-                <h2>My Tasks</h2>
+                <span>My Tasks</span>
             </div>
 
-            <nav>
-                <a href="#" class="nav-link active">
+            <nav class="navigation">
+
+                <a href="#dashboard" class="nav-link active">
                     <span>▦</span>
                     Dashboard
                 </a>
 
                 <a href="#tasks" class="nav-link">
                     <span>✓</span>
-                    My Tasks
+                    Tasks
                 </a>
 
-                <a href="#completed" class="nav-link">
-                    <span>✓</span>
-                    Completed
+                <a href="#notes" class="nav-link">
+                    <span>▤</span>
+                    Notes
                 </a>
+
             </nav>
 
-            <div class="sidebar-bottom">
-                <p>Stay productive.</p>
-                <p>One task at a time.</p>
+            <div class="sidebar-footer">
+                <p>Keep it simple.</p>
+                <p>Get things done.</p>
             </div>
 
         </aside>
 
 
-        <!-- Main Content -->
+        <!-- MAIN CONTENT -->
         <main class="main-content">
 
-            <!-- Top bar -->
+            <!-- TOP BAR -->
             <header class="topbar">
+
                 <div>
-                    <p class="small-title">MY DASHBOARD</p>
-                    <h1>Good evening! 👋</h1>
+                    <p class="eyebrow">MY WORKSPACE</p>
+                    <h1>Good evening 👋</h1>
                 </div>
 
                 <div class="profile">
-                    <div class="profile-circle">U</div>
+                    U
                 </div>
+
             </header>
 
 
-            <!-- Welcome -->
-            <section class="welcome">
-                <div>
-                    <h2>Let's get things done.</h2>
-                    <p>Here's a quick overview of your tasks for today.</p>
+            <!-- DASHBOARD -->
+            <section id="dashboard">
+
+                <div class="welcome-card">
+
+                    <div>
+                        <p class="eyebrow">OVERVIEW</p>
+
+                        <h2>Stay focused on what matters.</h2>
+
+                        <p>
+                            Manage your tasks and keep your important notes in one place.
+                        </p>
+                    </div>
+
                 </div>
+
+
+                <!-- STATISTICS -->
+                <div class="stats">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            T
+                        </div>
+
+                        <div>
+                            <p>Total Tasks</p>
+                            <h3 id="total-count">0</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <p>Completed</p>
+                            <h3 id="completed-count">0</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            →
+                        </div>
+
+                        <div>
+                            <p>Remaining</p>
+                            <h3 id="remaining-count">0</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </section>
 
 
-            <!-- Statistics -->
-            <section class="stats">
+            <!-- TASKS -->
+            <section class="content-section" id="tasks">
 
-                <div class="stat-card">
-                    <div class="stat-icon">📋</div>
+                <div class="section-heading">
+
                     <div>
-                        <p>Total Tasks</p>
-                        <h2 id="total-count">0</h2>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">✓</div>
-                    <div>
-                        <p>Completed</p>
-                        <h2 id="completed-count">0</h2>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">⏳</div>
-                    <div>
-                        <p>Remaining</p>
-                        <h2 id="remaining-count">0</h2>
-                    </div>
-                </div>
-
-            </section>
-
-
-            <!-- Tasks -->
-            <section class="tasks-section" id="tasks">
-
-                <div class="section-header">
-                    <div>
+                        <p class="eyebrow">PRODUCTIVITY</p>
                         <h2>My Tasks</h2>
-                        <p>Manage your daily tasks</p>
                     </div>
 
-                    <button id="clear-completed" class="clear-button">
-                        Clear Completed
+                    <button
+                        id="clear-completed"
+                        class="secondary-button">
+                        Clear completed
                     </button>
+
                 </div>
 
 
-                <!-- Add Task -->
+                <!-- ADD TASK -->
                 <form id="task-form" class="task-form">
 
                     <input
                         type="text"
                         id="task-input"
-                        placeholder="What do you need to do?"
+                        placeholder="What needs to be done?"
                         autocomplete="off"
                     >
 
-                    <button type="submit">
-                        + Add Task
+                    <button type="submit" class="primary-button">
+                        Add Task
                     </button>
 
                 </form>
 
 
-                <!-- Task List -->
+                <!-- TASK LIST -->
                 <div id="task-list" class="task-list"></div>
 
 
-                <!-- Empty State -->
+                <!-- EMPTY STATE -->
                 <div id="empty-state" class="empty-state">
-                    <div class="empty-icon">✓</div>
+
+                    <div class="empty-icon">
+                        ✓
+                    </div>
+
                     <h3>No tasks yet</h3>
-                    <p>Add a task above to get started.</p>
+
+                    <p>
+                        Add your first task and start getting things done.
+                    </p>
+
                 </div>
+
+            </section>
+
+
+            <!-- NOTES -->
+            <section class="content-section notes-section" id="notes">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">QUICK NOTES</p>
+                        <h2>Notes</h2>
+                    </div>
+
+                </div>
+
+
+                <!-- ADD NOTE -->
+                <form id="note-form" class="note-form">
+
+                    <input
+                        type="text"
+                        id="note-input"
+                        placeholder="Write a quick note..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit" class="primary-button">
+                        Add Note
+                    </button>
+
+                </form>
+
+
+                <!-- NOTES LIST -->
+                <div id="notes-list" class="notes-list"></div>
 
             </section>
 
         </main>
 
     </div>
+
 
     <script src="script.js"></script>
 

@@ -1,6 +1,6 @@
-// --------------------------------------
-// Get the HTML elements we need
-// --------------------------------------
+// ======================================
+// GET HTML ELEMENTS
+// ======================================
 
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
@@ -16,236 +16,446 @@ const clearCompletedButton =
     document.getElementById("clear-completed");
 
 
-// --------------------------------------
-// Load tasks from localStorage
-// --------------------------------------
+// ======================================
+// NOTES ELEMENTS
+// ======================================
 
-// localStorage stores information inside the browser.
-// If there are no saved tasks, we start with an empty array.
+const noteForm = document.getElementById("note-form");
+const noteInput = document.getElementById("note-input");
+const notesList = document.getElementById("notes-list");
+
+
+// ======================================
+// LOAD TASKS
+// ======================================
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
-// --------------------------------------
-// Save tasks to localStorage
-// --------------------------------------
+// ======================================
+// LOAD NOTES
+// ======================================
+
+let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+
+// ======================================
+// SAVE TASKS
+// ======================================
 
 function saveTasks() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    localStorage.setItem(
+        "tasks",
+        JSON.stringify(tasks)
+    );
+
 }
 
 
-// --------------------------------------
-// Display all tasks
-// --------------------------------------
+// ======================================
+// SAVE NOTES
+// ======================================
+
+function saveNotes() {
+
+    localStorage.setItem(
+        "notes",
+        JSON.stringify(notes)
+    );
+
+}
+
+
+// ======================================
+// DISPLAY TASKS
+// ======================================
 
 function renderTasks() {
 
-    // Clear the current task list before rebuilding it.
     taskList.innerHTML = "";
 
-    // Create a task element for every task.
+
     tasks.forEach(function(task) {
 
-        const taskElement = document.createElement("div");
+        const taskElement =
+            document.createElement("div");
 
-        taskElement.className = "task";
+        taskElement.className = "task-item";
 
-        // Add the completed class when necessary.
+
+        // Completed task
         if (task.completed) {
+
             taskElement.classList.add("completed");
+
         }
 
 
-        // --------------------------------------
-        // Checkbox
-        // --------------------------------------
+        // CHECKBOX
 
-        const checkbox = document.createElement("input");
+        const checkbox =
+            document.createElement("input");
 
         checkbox.type = "checkbox";
+
         checkbox.className = "task-checkbox";
 
         checkbox.checked = task.completed;
 
 
-        // When the checkbox changes, update the task.
-        checkbox.addEventListener("change", function() {
+        checkbox.addEventListener(
+            "change",
+            function() {
 
-            task.completed = checkbox.checked;
+                task.completed =
+                    checkbox.checked;
 
-            saveTasks();
+                saveTasks();
 
-            renderTasks();
-        });
+                renderTasks();
+
+            }
+        );
 
 
-        // --------------------------------------
-        // Task text
-        // --------------------------------------
+        // TASK TEXT
 
-        const taskText = document.createElement("span");
+        const taskText =
+            document.createElement("span");
 
         taskText.className = "task-text";
 
-        taskText.textContent = task.text;
+        taskText.textContent =
+            task.text;
 
 
-        // --------------------------------------
-        // Delete button
-        // --------------------------------------
+        // DELETE BUTTON
 
-        const deleteButton = document.createElement("button");
+        const deleteButton =
+            document.createElement("button");
 
-        deleteButton.className = "delete-button";
+        deleteButton.className =
+            "delete-button";
 
-        deleteButton.textContent = "Delete";
-
-
-        deleteButton.addEventListener("click", function() {
-
-            // Remove this task from the array.
-            tasks = tasks.filter(function(item) {
-                return item.id !== task.id;
-            });
-
-            saveTasks();
-
-            renderTasks();
-        });
+        deleteButton.textContent =
+            "Delete";
 
 
-        // --------------------------------------
-        // Put everything inside the task
-        // --------------------------------------
+        deleteButton.addEventListener(
+            "click",
+            function() {
+
+                tasks =
+                    tasks.filter(function(item) {
+
+                        return item.id !== task.id;
+
+                    });
+
+                saveTasks();
+
+                renderTasks();
+
+            }
+        );
+
+
+        // ADD ELEMENTS
 
         taskElement.appendChild(checkbox);
+
         taskElement.appendChild(taskText);
+
         taskElement.appendChild(deleteButton);
 
         taskList.appendChild(taskElement);
+
     });
 
 
     updateCounts();
 
     updateEmptyState();
+
 }
 
 
-// --------------------------------------
-// Add a new task
-// --------------------------------------
+// ======================================
+// ADD TASK
+// ======================================
 
 function addTask() {
 
-    // trim() removes unnecessary spaces
-    // from the beginning and end.
-    const text = taskInput.value.trim();
+    const text =
+        taskInput.value.trim();
 
 
-    // Do not allow empty tasks.
+    // Prevent empty tasks
+
     if (text === "") {
+
         return;
+
     }
 
 
-    // Create a new task object.
     const newTask = {
+
         id: Date.now(),
+
         text: text,
+
         completed: false
+
     };
 
 
-    // Add the new task to our tasks array.
     tasks.push(newTask);
 
 
-    // Save the updated list.
     saveTasks();
 
-
-    // Display the updated list.
     renderTasks();
 
 
-    // Clear the input field.
     taskInput.value = "";
 
-    // Put the cursor back into the input.
     taskInput.focus();
+
 }
 
 
-// --------------------------------------
-// Handle the Add Task form
-// --------------------------------------
+// ======================================
+// TASK FORM
+// ======================================
 
-taskForm.addEventListener("submit", function(event) {
+taskForm.addEventListener(
+    "submit",
+    function(event) {
 
-    // Prevent the browser from refreshing
-    // the page when the form is submitted.
-    event.preventDefault();
+        event.preventDefault();
 
-    addTask();
-});
+        addTask();
+
+    }
+);
 
 
-// --------------------------------------
-// Update task counts
-// --------------------------------------
+// ======================================
+// UPDATE COUNTS
+// ======================================
 
 function updateCounts() {
 
-    const total = tasks.length;
-
-    const completed = tasks.filter(function(task) {
-        return task.completed;
-    }).length;
-
-    const remaining = total - completed;
+    const total =
+        tasks.length;
 
 
-    totalCount.textContent = total;
-    completedCount.textContent = completed;
-    remainingCount.textContent = remaining;
+    const completed =
+        tasks.filter(function(task) {
+
+            return task.completed;
+
+        }).length;
+
+
+    const remaining =
+        total - completed;
+
+
+    totalCount.textContent =
+        total;
+
+    completedCount.textContent =
+        completed;
+
+    remainingCount.textContent =
+        remaining;
+
 }
 
 
-// --------------------------------------
-// Show or hide the empty state
-// --------------------------------------
+// ======================================
+// EMPTY STATE
+// ======================================
 
 function updateEmptyState() {
 
     if (tasks.length === 0) {
-        emptyState.style.display = "block";
+
+        emptyState.style.display =
+            "block";
+
     } else {
-        emptyState.style.display = "none";
+
+        emptyState.style.display =
+            "none";
+
     }
+
 }
 
 
-// --------------------------------------
-// Clear completed tasks
-// --------------------------------------
+// ======================================
+// CLEAR COMPLETED
+// ======================================
 
-clearCompletedButton.addEventListener("click", function() {
+clearCompletedButton.addEventListener(
+    "click",
+    function() {
 
-    tasks = tasks.filter(function(task) {
-        return !task.completed;
+        tasks =
+            tasks.filter(function(task) {
+
+                return !task.completed;
+
+            });
+
+
+        saveTasks();
+
+        renderTasks();
+
+    }
+);
+
+
+// ======================================
+// DISPLAY NOTES
+// ======================================
+
+function renderNotes() {
+
+    notesList.innerHTML = "";
+
+
+    notes.forEach(function(note) {
+
+        const noteElement =
+            document.createElement("div");
+
+        noteElement.className = "note";
+
+
+        // NOTE TEXT
+
+        const noteText =
+            document.createElement("p");
+
+        noteText.className =
+            "note-text";
+
+        noteText.textContent =
+            note.text;
+
+
+        // DELETE NOTE
+
+        const deleteNote =
+            document.createElement("button");
+
+        deleteNote.className =
+            "delete-note";
+
+        deleteNote.textContent =
+            "Delete";
+
+
+        deleteNote.addEventListener(
+            "click",
+            function() {
+
+                notes =
+                    notes.filter(function(item) {
+
+                        return item.id !== note.id;
+
+                    });
+
+
+                saveNotes();
+
+                renderNotes();
+
+            }
+        );
+
+
+        noteElement.appendChild(noteText);
+
+        noteElement.appendChild(deleteNote);
+
+        notesList.appendChild(noteElement);
+
     });
 
-    saveTasks();
-
-    renderTasks();
-});
+}
 
 
-// --------------------------------------
-// Start the application
-// --------------------------------------
+// ======================================
+// ADD NOTE
+// ======================================
 
-// Display saved tasks when the page loads.
+function addNote() {
+
+    const text =
+        noteInput.value.trim();
+
+
+    // Prevent empty notes
+
+    if (text === "") {
+
+        return;
+
+    }
+
+
+    const newNote = {
+
+        id: Date.now(),
+
+        text: text
+
+    };
+
+
+    notes.push(newNote);
+
+
+    saveNotes();
+
+    renderNotes();
+
+
+    noteInput.value = "";
+
+    noteInput.focus();
+
+}
+
+
+// ======================================
+// NOTE FORM
+// ======================================
+
+noteForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        addNote();
+
+    }
+);
+
+
+// ======================================
+// START APPLICATION
+// ======================================
+
 renderTasks();
+
+renderNotes();
