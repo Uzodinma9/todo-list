@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">✓</div>
+                <h2>My Tasks</h2>
+            </div>
+
+            <nav>
+                <a href="#" class="nav-link active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a href="#tasks" class="nav-link">
+                    <span>✓</span>
+                    My Tasks
+                </a>
+
+                <a href="#completed" class="nav-link">
+                    <span>✓</span>
+                    Completed
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Stay productive.</p>
+                <p>One task at a time.</p>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+            <header class="topbar">
+                <div>
+                    <p class="small-title">MY DASHBOARD</p>
+                    <h1>Good evening! 👋</h1>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-circle">U</div>
+                </div>
+            </header>
+
+
+            <!-- Welcome -->
+            <section class="welcome">
+                <div>
+                    <h2>Let's get things done.</h2>
+                    <p>Here's a quick overview of your tasks for today.</p>
+                </div>
+            </section>
+
+
+            <!-- Statistics -->
+            <section class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <div>
+                        <p>Total Tasks</p>
+                        <h2 id="total-count">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">✓</div>
+                    <div>
+                        <p>Completed</p>
+                        <h2 id="completed-count">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
+                    <div>
+                        <p>Remaining</p>
+                        <h2 id="remaining-count">0</h2>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Tasks -->
+            <section class="tasks-section" id="tasks">
+
+                <div class="section-header">
+                    <div>
+                        <h2>My Tasks</h2>
+                        <p>Manage your daily tasks</p>
+                    </div>
+
+                    <button id="clear-completed" class="clear-button">
+                        Clear Completed
+                    </button>
+                </div>
+
+
+                <!-- Add Task -->
+                <form id="task-form" class="task-form">
+
+                    <input
+                        type="text"
+                        id="task-input"
+                        placeholder="What do you need to do?"
+                        autocomplete="off"
+                    >
+
+                    <button type="submit">
+                        + Add Task
+                    </button>
+
+                </form>
+
+
+                <!-- Task List -->
+                <div id="task-list" class="task-list"></div>
+
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state">
+                    <div class="empty-icon">✓</div>
+                    <h3>No tasks yet</h3>
+                    <p>Add a task above to get started.</p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
